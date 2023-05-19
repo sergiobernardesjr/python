@@ -26,7 +26,7 @@ width = int(stream.get(3))
 height = int(stream.get(4))
 
 output = cv2.VideoWriter('video_sem_fundo.mp4',
-                         cv2.VideoWriter_fourcc('m', 'p', 'g', '4'),
+                         cv2.VideoWriter_fourcc('m', 'p', '4', 'v'),
                          fps=fps, frameSize=(width, height))
 
 stream.set(cv2.CAP_PROP_POS_FRAMES, 0)
@@ -43,7 +43,7 @@ while True:
     output.write(diff)
     cv2.imshow('Video', diff)
     cv2.waitKey(20)
-    if cv2.waitKey(1) == ord('q'):
+    if cv2.waitKey(27) == 27:
         break
 
 stream.release()
