@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 stream = cv2.VideoCapture('example.mp4')
+escButton = 27
 
 if not stream.isOpened():
     print('Sem video para capturar')
@@ -42,8 +43,7 @@ while True:
     threshold, diff = cv2.threshold(dif_frame, 100, 255, cv2.THRESH_BINARY)
     output.write(diff)
     cv2.imshow('Video', diff)
-    cv2.waitKey(20)
-    if cv2.waitKey(27) == 27:
+    if cv2.waitKey(escButton) == escButton:
         break
 
 stream.release()
